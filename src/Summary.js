@@ -1,8 +1,8 @@
-import { Stack, Typography } from '@mui/material'
+import { Grid, Typography } from '@mui/material';
 
-export const Summary = () => {
+export default function Summary() {
   return (
-    <Stack alignItems="center">
+    <Grid>
       <Typography paragraph variant="body1" textAlign="center">
         Highly motivated junior developer experienced in multiplatform mobile
         development and eager of delivering high-quality solutions for
@@ -12,6 +12,6 @@ export const Summary = () => {
         experienced in multiplatform mobile development and eager of delivering
         high-quality solutions for innovative projects.
       </Typography>
-    </Stack>
-  )
+    </Grid>
+  );
 }

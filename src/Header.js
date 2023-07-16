@@ -1,52 +1,122 @@
+import MenuIcon from '@mui/icons-material/Menu';
 import {
   AppBar,
+  Box,
   Container,
-  Stack,
-  Tab,
-  Tabs,
+  Divider,
+  Drawer,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
   Toolbar,
   Typography,
+  useMediaQuery,
+  useTheme,
+  Stack,
 } from '@mui/material';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+
+// const navItems = ['Home', 'About', 'Experience', 'ContactMe'];
+const navItems = [
+  { navigate: '/', name: 'Home' },
+  { navigate: '/About', name: 'About' },
+  { navigate: '/Experience', name: 'Experience' },
+  { navigate: '/ContactMe', name: 'Contact' },
+];
 
 export const Header = () => {
-  const [currentTabIndex, setTabIndex] = useState(0);
-  const handleChange = (_, newIndex) => {
-    setTabIndex(newIndex);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const handleDrawerToggle = () => {
+    setDrawerOpen((prevState) => !prevState);
   };
 
-  return (
-    <AppBar>
-      <Container>
-        <Toolbar>
-          <Link to="/.">VANESSA WONG</Link>
-          <Link to="/.">ABOUT</Link>
-          <Link to="/.">EXPERIENCE</Link>
-          <Link to="/.">CONTACT</Link>
-        </Toolbar>
-      </Container>
-    </AppBar>
+  const toolBar = navItems.map((item) => (
+    <ListItem key={item.name} translate="yes">
+      <ListItemButton
+        sx={{ textAlign: 'left' }}
+        LinkComponent="a"
+        href={item.navigate}
+      >
+        <ListItemText primary={item.name} />
+      </ListItemButton>
+    </ListItem>
+  ));
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ width: 200, textAlign: 'left' }}>
+      <Box padding={4}></Box>
+      <Divider />
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item.name}>
+            <ListItemButton
+              sx={{ textAlign: 'left' }}
+              LinkComponent="a"
+              href={item.navigate}
+            >
+              <ListItemText primary={item.name} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
+  const name = (
+    <Typography variant="h6" marginLeft={8}>
+      Vanessa Wong
+    </Typography>
   );
 
   return (
-    <Stack>
-      <Tabs value={currentTabIndex} onChange={handleChange} variant="fullWidth">
-        <Tab
-          label={<Typography variant="h3">VANESSA WONG</Typography>}
-          tabIndex={0}
-          style={{ flex: '0 0 auto' }}
-        />
-        <Tab label={<Typography variant="h5">About</Typography>} tabIndex={1} />
-        <Tab
-          label={<Typography variant="h5">Experience</Typography>}
-          tabIndex={2}
-        />
-        <Tab
-          label={<Typography variant="h5">Contact</Typography>}
-          tabIndex={3}
-        />
-      </Tabs>
-    </Stack>
+    <>
+      <AppBar position="static">
+        <Container>
+          <Toolbar>
+            {isMobile ? (
+              <>
+                <IconButton
+                  onClick={() => {
+                    setDrawerOpen((previousValue) => !previousValue);
+                  }}
+                >
+                  <MenuIcon />
+                </IconButton>
+                {name}
+              </>
+            ) : (
+              <Grid
+                container
+                flexDirection="row "
+                alignContent="center"
+                justifyContent="center"
+              >
+                <Stack flex={0.8} justifyContent="center">
+                  {name}
+                </Stack>
+                <Stack flex={1} flexDirection="row">
+                  {toolBar}
+                </Stack>
+              </Grid>
+            )}
+          </Toolbar>
+        </Container>
+      </AppBar>
+      <Box>
+        <Drawer
+          variant="temporary"
+          open={drawerOpen}
+          onClose={handleDrawerToggle}
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+    </>
   );
 };

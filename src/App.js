@@ -1,32 +1,30 @@
-import { Switch } from '../node_modules/@mui/material/index';
-import { Router, Route } from '../node_modules/react-router-dom/dist/index';
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  Navigate,
+} from 'react-router-dom';
 import './App.css';
+import { Header } from './Header';
+import Home from './Home';
+import About from './About';
 import { CareerHistory } from './CareerHistory';
 import { ContactMe } from './ContactMe';
-import { EducationHistory } from './EducationHistory';
-import { Header } from './Header';
-import { Summary } from './Summary';
+import Footer from './Footer';
 
 function App() {
   return (
-    <Router location={''} navigator={undefined}>
+    <Router>
       <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/faq" component={Faq} />
-      </Switch>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Experience" element={<CareerHistory />} />
+        <Route path="/ContactMe" element={<ContactMe />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+      <Footer />
     </Router>
-  );
-  return (
-    <>
-      <Header />
-      {/* <Summary />
-      <CareerHistory />
-      <EducationHistory />
-      <ContactMe /> */}
-    </>
   );
 }
 
