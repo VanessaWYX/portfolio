@@ -2,7 +2,7 @@ import {
   Card,
   CardContent,
   IconButton,
-  Paper,
+  Grid,
   Stack,
   Typography,
   Unstable_Grid2,
@@ -28,8 +28,7 @@ const Contacts = [
 
 function Footer() {
   return (
-    // eslint-disable-next-line react/jsx-pascal-case
-    <Unstable_Grid2
+    <Grid
       container
       justifyContent="center"
       flexDirection="column"
@@ -37,7 +36,6 @@ function Footer() {
       marginTop={10}
     >
       <Typography textAlign="center">
-        {' '}
         Designed and Developed by Vanessa
       </Typography>
 
@@ -50,7 +48,7 @@ function Footer() {
           );
         })}
       </Stack>
-    </Unstable_Grid2>
+    </Grid>
   );
 }
 

@@ -2,32 +2,28 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {
   AppBar,
   Box,
-  Container,
   Divider,
   Drawer,
-  Grid,
   IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
   Toolbar,
-  Typography,
   useMediaQuery,
   useTheme,
-  Stack,
 } from '@mui/material';
 import React from 'react';
-
-// const navItems = ['Home', 'About', 'Experience', 'ContactMe'];
+import { useNavigate } from 'react-router-dom';
 const navItems = [
-  { navigate: '/', name: 'Home' },
+  { navigate: '/', name: 'Vanessa Wong' },
   { navigate: '/About', name: 'About' },
   { navigate: '/Experience', name: 'Experience' },
   { navigate: '/ContactMe', name: 'Contact' },
 ];
 
-export const Header = () => {
+export default function Header() {
+  const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -37,11 +33,13 @@ export const Header = () => {
   };
 
   const toolBar = navItems.map((item) => (
-    <ListItem key={item.name} translate="yes">
+    <ListItem key={item.name}>
       <ListItemButton
-        sx={{ textAlign: 'left' }}
-        LinkComponent="a"
-        href={item.navigate}
+        onClick={() => {
+          navigate(item.navigate);
+        }}
+        alignItems="flex-start"
+        selected={false}
       >
         <ListItemText primary={item.name} />
       </ListItemButton>
@@ -55,12 +53,13 @@ export const Header = () => {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name}>
-            <ListItemButton
-              sx={{ textAlign: 'left' }}
-              LinkComponent="a"
-              href={item.navigate}
-            >
-              <ListItemText primary={item.name} />
+            <ListItemButton sx={{ textAlign: 'left' }}>
+              <ListItemText
+                primary={item.name}
+                onClick={() => {
+                  navigate(item.navigate);
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -68,45 +67,24 @@ export const Header = () => {
     </Box>
   );
 
-  const name = (
-    <Typography variant="h6" marginLeft={8}>
-      Vanessa Wong
-    </Typography>
-  );
-
   return (
     <>
       <AppBar position="static">
-        <Container>
-          <Toolbar>
-            {isMobile ? (
-              <>
-                <IconButton
-                  onClick={() => {
-                    setDrawerOpen((previousValue) => !previousValue);
-                  }}
-                >
-                  <MenuIcon />
-                </IconButton>
-                {name}
-              </>
-            ) : (
-              <Grid
-                container
-                flexDirection="row "
-                alignContent="center"
-                justifyContent="center"
+        <Toolbar disableGutters>
+          {isMobile ? (
+            <>
+              <IconButton
+                onClick={() => {
+                  setDrawerOpen((previousValue) => !previousValue);
+                }}
               >
-                <Stack flex={0.8} justifyContent="center">
-                  {name}
-                </Stack>
-                <Stack flex={1} flexDirection="row">
-                  {toolBar}
-                </Stack>
-              </Grid>
-            )}
-          </Toolbar>
-        </Container>
+                <MenuIcon />
+              </IconButton>
+            </>
+          ) : (
+            <>{toolBar}</>
+          )}
+        </Toolbar>
       </AppBar>
       <Box>
         <Drawer
@@ -119,4 +97,4 @@ export const Header = () => {
       </Box>
     </>
   );
-};
+}
