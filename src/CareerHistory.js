@@ -1,21 +1,15 @@
-import {
-  Step,
-  StepContent,
-  StepLabel,
-  Stepper,
-  Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material';
 
-import Timeline from '@mui/lab/Timeline'
-import TimelineItem from '@mui/lab/TimelineItem'
-import TimelineSeparator from '@mui/lab/TimelineSeparator'
-import TimelineConnector from '@mui/lab/TimelineConnector'
-import TimelineContent from '@mui/lab/TimelineContent'
-import TimelineDot from '@mui/lab/TimelineDot'
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
 
 export const CareerHistory = () => {
   return (
-    <>
+    <Grid marginTop={10}>
       <Timeline position="alternate">
         <TimelineItem>
           <TimelineSeparator>
@@ -98,6 +92,6 @@ export const CareerHistory = () => {
           </TimelineContent>
         </TimelineItem>
       </Timeline>
-    </>
-  )
-}
+    </Grid>
+  );
+};

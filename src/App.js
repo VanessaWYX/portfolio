@@ -1,20 +1,40 @@
-import './App.css'
-import { CareerHistory } from './CareerHistory'
-import { ContactMe } from './ContactMe'
-import { EducationHistory } from './EducationHistory'
-import { Header } from './Header'
-import { Summary } from './Summary'
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  Navigate,
+} from 'react-router-dom';
+import './App.css';
+import Home from './Home';
+import Header from './Header';
+import About from './About';
+import { CareerHistory } from './CareerHistory';
+import { ContactMe } from './ContactMe';
+import Footer from './Footer';
+import { Grid } from '@mui/material';
 
 function App() {
   return (
-    <>
-      <Header />
-      <Summary />
-      <CareerHistory />
-      <EducationHistory />
-      <ContactMe />
-    </>
-  )
+    <Grid>
+      <Router>
+        <Header />
+        <Routes>
+          {/* <Route exact path="/" Component={Home} />
+          <Route path="/About" Component={About} />
+          <Route path="/Experience" Component={CareerHistory} />
+          <Route path="/ContactMe" Component={ContactMe} />
+          <Route path="*" element={<Navigate to="/" />} /> */}
+
+          <Route exact path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Experience" element={<CareerHistory />} />
+          <Route path="/ContactMe" element={<ContactMe />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </Grid>
+  );
 }
 
-export default App
+export default App;
