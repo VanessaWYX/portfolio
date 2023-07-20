@@ -1,6 +1,6 @@
 import {
   Route,
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Navigate,
 } from 'react-router-dom';
@@ -19,12 +19,6 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          {/* <Route exact path="/" Component={Home} />
-          <Route path="/About" Component={About} />
-          <Route path="/Experience" Component={CareerHistory} />
-          <Route path="/ContactMe" Component={ContactMe} />
-          <Route path="*" element={<Navigate to="/" />} /> */}
-
           <Route exact path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
           <Route path="/Experience" element={<CareerHistory />} />
