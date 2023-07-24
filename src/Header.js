@@ -12,6 +12,8 @@ import {
   Toolbar,
   useMediaQuery,
   useTheme,
+  Typography,
+  Stack,
 } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -28,6 +30,7 @@ export default function Header() {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [title, setTitle] = React.useState('Vanessa Wong');
   const handleDrawerToggle = () => {
     setDrawerOpen((prevState) => !prevState);
   };
@@ -58,6 +61,7 @@ export default function Header() {
                 primary={item.name}
                 onClick={() => {
                   navigate(item.navigate);
+                  setTitle(item.name);
                 }}
               />
             </ListItemButton>
@@ -69,10 +73,10 @@ export default function Header() {
 
   return (
     <>
-      <AppBar position="static">
-        <Toolbar disableGutters>
+      <AppBar position="sticky">
+        <Toolbar sx={{ height: 100 }}>
           {isMobile ? (
-            <>
+            <Stack direction="row" spacing={4} alignItems="center">
               <IconButton
                 onClick={() => {
                   setDrawerOpen((previousValue) => !previousValue);
@@ -80,7 +84,10 @@ export default function Header() {
               >
                 <MenuIcon />
               </IconButton>
-            </>
+              <Typography variant="h6" textAlign="center">
+                {title}
+              </Typography>
+            </Stack>
           ) : (
             <>{toolBar}</>
           )}
