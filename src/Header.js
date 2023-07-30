@@ -21,7 +21,7 @@ const navItems = [
   { navigate: '/', name: 'Vanessa Wong' },
   { navigate: '/About', name: 'About' },
   { navigate: '/Experience', name: 'Experience' },
-  { navigate: '/ContactMe', name: 'Contact' },
+  { navigate: '/Contact', name: 'Contact' },
 ];
 
 export default function Header() {
@@ -73,7 +73,11 @@ export default function Header() {
 
   return (
     <>
-      <AppBar position="sticky">
+      <AppBar
+        position="sticky"
+        color="transparent"
+        sx={{ backgroundColor: '#eff1f3' }}
+      >
         <Toolbar sx={{ height: 100 }}>
           {isMobile ? (
             <Stack direction="row" spacing={4} alignItems="center">

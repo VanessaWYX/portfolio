@@ -32,8 +32,8 @@ function Footer() {
       container
       justifyContent="center"
       flexDirection="column"
-      padding={10}
-      marginTop={10}
+      padding={5}
+      marginTop={5}
     >
       <Typography textAlign="center">
         Designed and Developed by Vanessa
