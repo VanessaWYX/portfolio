@@ -2,7 +2,7 @@ import { Typography, Box } from '@mui/material';
 
 export default function Summary() {
   return (
-    <Box display="flex" flex={1} flexDirection="column">
+    <Box display="flex" flex={1} flexDirection="column" gap={1}>
       <Typography variant="h3" textAlign="center">
         Welcome to my space!
       </Typography>

@@ -19,9 +19,8 @@ export const ContactMe = () => {
       rowSpacing={2}
       width="100%"
       maxWidth="100%"
-      padding={8}
+      padding={{ lg: 8, md: 8, sm: 2, xs: 2 }}
       margin={0}
-      rowGap={4}
     >
       <Grid
         item
@@ -40,7 +39,7 @@ export const ContactMe = () => {
         width="100%"
         maxWidth="100%"
         padding={2}
-        marginTop={8}
+        marginTop={{ lg: 12, md: 12, sm: 8, xs: 8 }}
         sx={{
           flexDirection: {
             sm: 'column',
@@ -58,7 +57,7 @@ export const ContactMe = () => {
           gap={4}
           alignItems="center"
         >
-          <Typography variant="body2">EMAIL</Typography>
+          <Typography variant="body2">Email</Typography>
           <Link
             onClick={(e) => {
               window.location.href = 'mailto:vanessa.wyx@outlook.com';
@@ -67,7 +66,7 @@ export const ContactMe = () => {
           >
             <Typography variant="body2">vanessa.wyx@outlook.com</Typography>
           </Link>
-          <Typography variant="body2">LINKED IN</Typography>
+          <Typography variant="body2">Linked In</Typography>
           <Link
             onClick={(e) => {
               window.open(
@@ -87,7 +86,7 @@ export const ContactMe = () => {
           gap={4}
           alignItems="center"
         >
-          <Typography variant="body2">RESUME</Typography>
+          <Typography variant="body2">Resume</Typography>
           <IconButton
             onClick={(e) => {
               window.open(

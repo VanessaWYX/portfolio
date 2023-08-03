@@ -99,7 +99,7 @@ export const CareerHistory = () => {
       rowSpacing={2}
       width="100%"
       maxWidth="100%"
-      padding={{ md: 8, sm: 2, xs: 2 }}
+      padding={{ lg: 8, md: 8, sm: 2, xs: 2 }}
       margin={0}
       rowGap={4}
     >
@@ -137,7 +137,12 @@ export const CareerHistory = () => {
                   sx={{ width: 'fit-content', padding: 1 }}
                 ></Chip>
               </Stack>
-              <Typography variant="h6">{job.company}</Typography>
+              <Typography
+                variant="h5"
+                style={{ color: job.isPresent ? '#1976d2' : '000000' }}
+              >
+                {job.company}
+              </Typography>
               <Typography variant="body2">{job.companyDescription}</Typography>
               <Box padding={1}></Box>
               <Box paddingX={2}>

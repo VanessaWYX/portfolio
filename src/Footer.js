@@ -28,13 +28,7 @@ const Contacts = [
 
 function Footer() {
   return (
-    <Grid
-      container
-      justifyContent="center"
-      flexDirection="column"
-      padding={5}
-      marginTop={5}
-    >
+    <Grid container justifyContent="center" flexDirection="column" padding={5}>
       <Typography textAlign="center">
         Designed and Developed by Vanessa
       </Typography>
@@ -42,7 +36,13 @@ function Footer() {
       <Stack flex={1} flexDirection="row" justifyContent="center">
         {Contacts.map((contact) => {
           return (
-            <IconButton key={contact.name} color="primary">
+            <IconButton
+              key={contact.name}
+              color="primary"
+              onClick={(e) => {
+                window.open(contact.url, 'blank');
+              }}
+            >
               {contact.component}
             </IconButton>
           );
